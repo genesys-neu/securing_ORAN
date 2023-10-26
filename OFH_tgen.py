@@ -47,8 +47,10 @@ with open(file_name, 'r') as csvfile:
         print("I am the DU, I start communication")
         row2 = next(datareader)
         # print(row2)
-        # if row2[2] != 'Mellanox_5e:6b:2a':
-        if row2[2] != '192.168.1.9':
+        
+        # chose one of the following lines based on the .csv file you will use
+        # if row2[2] != 'Mellanox_5e:6b:2a': # for layer 2 switched traffic
+        if row2[2] != '192.168.1.9': # for layer 3 routed traffic
             print('RU starts, send start message')
             send_sock.sendto(str.encode('Start'), (Distant_IP, distant_port))
             start_time = time.time()
@@ -93,8 +95,9 @@ with open(file_name, 'r') as csvfile:
                 break
 
         for row in datareader:
-            # if row[2] == 'Chongqin_00:04:de':
-            if row[2] == '192.168.1.8':
+            # chose one of the following lines based on the .csv file you will use
+            # if row[2] == 'Chongqin_00:04:de': # for layer 2 switched traffic
+            if row[2] == '192.168.1.8': # for layer 3 routed traffic
                 data_size = int(row[5]) -42 
                 Sdata = os.urandom(data_size)
                 while time.time()-start_time <= float(row[1]):  # but first, we have to check the time!
