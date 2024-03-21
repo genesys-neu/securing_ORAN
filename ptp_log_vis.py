@@ -62,11 +62,15 @@ def main():
         #print(f'RMS array for {file_name}: {rms_array}')
         plot = px.Figure(data=[px.Scatter(
             y=rms_array,
-            mode='lines'
+            mode='lines',
+            # make the line red (for Malicious)
+            # TODO: make the benign traffic blue, and the malicious traffic different shades of red
+            # TODO: each malicious trace should have a different marker and line style (dashed, dotted, etc)
+            line=dict(color="#FF0000")
         )])
 
         plot.update_layout(
-            title="PTP Clock Offset",
+            title="PTP Clock Offset for {}".format(file_name),
             yaxis_title="Offset (ns)",
             xaxis_title="Elapsed time (s)",
             xaxis=dict(
