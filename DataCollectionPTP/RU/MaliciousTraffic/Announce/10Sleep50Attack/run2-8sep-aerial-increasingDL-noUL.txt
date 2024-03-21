@@ -1,0 +1,113 @@
+ptp4l[352445.604]: selected /dev/ptp0 as PTP clock
+ptp4l[352445.652]: port 1 (enp1s0f0np0): INITIALIZING to LISTENING on INIT_COMPLETE
+ptp4l[352445.652]: port 0 (/var/run/ptp4l): INITIALIZING to LISTENING on INIT_COMPLETE
+ptp4l[352445.652]: port 0 (/var/run/ptp4lro): INITIALIZING to LISTENING on INIT_COMPLETE
+ptp4l[352446.127]: selected local clock e8ebd3.fffe.b14702 as best master
+ptp4l[352448.984]: port 1 (enp1s0f0np0): new foreign master e8ebd3.fffe.b137e7-1
+ptp4l[352449.234]: selected best master clock e8ebd3.fffe.b137e7
+ptp4l[352449.234]: port 1 (enp1s0f0np0): LISTENING to UNCALIBRATED on RS_SLAVE
+ptp4l[352450.297]: port 1 (enp1s0f0np0): UNCALIBRATED to SLAVE on MASTER_CLOCK_SELECTED
+ptp4l[352451.047]: rms 1830 max 2540 freq  +4023 +/- 1424 delay  2111 +/-   0
+ptp4l[352452.048]: rms  326 max  492 freq  +5338 +/- 523
+ptp4l[352453.049]: rms  452 max  557 freq  +6405 +/- 115 delay  2092 +/-   0
+ptp4l[352454.049]: rms  188 max  312 freq  +6438 +/-  71 delay  2090 +/-   2
+ptp4l[352455.050]: rms   34 max   66 freq  +6282 +/-  53 delay  2089 +/-   0
+ptp4l[352456.051]: rms   44 max   76 freq  +6175 +/-  45
+ptp4l[352457.051]: rms   17 max   39 freq  +6179 +/-  22 delay  2085 +/-   0
+ptp4l[352458.052]: rms   20 max   35 freq  +6205 +/-  32
+ptp4l[352459.054]: rms   22 max   42 freq  +6207 +/-  36 delay  2082 +/-   0
+ptp4l[352460.055]: rms   19 max   41 freq  +6206 +/-  32
+ptp4l[352461.056]: rms   20 max   44 freq  +6209 +/-  33 delay  2078 +/-   0
+ptp4l[352462.057]: rms   22 max   48 freq  +6184 +/-  33 delay  2082 +/-   0
+ptp4l[352463.058]: rms   25 max   49 freq  +6225 +/-  36 delay  2081 +/-   0
+ptp4l[352464.059]: rms   24 max   39 freq  +6197 +/-  39 delay  2081 +/-   0
+ptp4l[352465.060]: rms   23 max   60 freq  +6199 +/-  39 delay  2085 +/-   0
+ptp4l[352466.061]: rms   25 max   46 freq  +6204 +/-  41
+ptp4l[352466.135]: port 1 (enp1s0f0np0): new foreign master 6805ca.fffe.2e5973-1
+ptp4l[352466.455]: selected best master clock 6805ca.fffe.2e5973
+ptp4l[352466.455]: port 1 (enp1s0f0np0): SLAVE to UNCALIBRATED on RS_SLAVE
+ptp4l[352516.481]: port 1 (enp1s0f0np0): UNCALIBRATED to LISTENING on ANNOUNCE_RECEIPT_TIMEOUT_EXPIRES
+ptp4l[352516.481]: selected local clock e8ebd3.fffe.b14702 as best master
+ptp4l[352516.659]: selected best master clock e8ebd3.fffe.b137e7
+ptp4l[352516.659]: port 1 (enp1s0f0np0): LISTENING to UNCALIBRATED on RS_SLAVE
+ptp4l[352518.284]: port 1 (enp1s0f0np0): UNCALIBRATED to SLAVE on MASTER_CLOCK_SELECTED
+ptp4l[352518.847]: rms 1532 max 3037 freq  +8739 +/- 2047 delay  2093 +/-   0
+ptp4l[352519.847]: rms  797 max 2599 freq  +7800 +/- 1325 delay  2114 +/-   0
+ptp4l[352520.848]: rms 1486 max 3776 freq  +6744 +/- 2347
+ptp4l[352521.849]: rms 1770 max 3687 freq  +6078 +/- 2825 delay  2093 +/-   0
+ptp4l[352522.849]: rms 1025 max 1756 freq  +4880 +/- 1280 delay  2084 +/-   7
+ptp4l[352523.850]: rms  187 max  293 freq  +5844 +/- 254
+ptp4l[352524.851]: rms 1643 max 4271 freq  +6710 +/- 2654 delay  2093 +/-   0
+ptp4l[352525.851]: rms  113 max  245 freq  +5906 +/- 131 delay  2091 +/-   0
+ptp4l[352526.471]: selected best master clock 6805ca.fffe.2e5973
+ptp4l[352526.471]: port 1 (enp1s0f0np0): SLAVE to UNCALIBRATED on RS_SLAVE
+ptp4l[352576.508]: port 1 (enp1s0f0np0): UNCALIBRATED to LISTENING on ANNOUNCE_RECEIPT_TIMEOUT_EXPIRES
+ptp4l[352576.508]: selected local clock e8ebd3.fffe.b14702 as best master
+ptp4l[352576.701]: selected best master clock e8ebd3.fffe.b137e7
+ptp4l[352576.701]: port 1 (enp1s0f0np0): LISTENING to UNCALIBRATED on RS_SLAVE
+ptp4l[352577.264]: port 1 (enp1s0f0np0): UNCALIBRATED to SLAVE on MASTER_CLOCK_SELECTED
+ptp4l[352577.639]: rms  424 max  865 freq  +6691 +/- 580 delay  2085 +/-   7
+ptp4l[352578.639]: rms  478 max 1758 freq  +6837 +/- 760
+ptp4l[352579.639]: rms  189 max  250 freq  +6180 +/-  56 delay  2078 +/-   0
+ptp4l[352580.639]: rms   73 max  119 freq  +6177 +/-  30 delay  2072 +/-   0
+ptp4l[352581.640]: rms   21 max   45 freq  +6231 +/-  33 delay  2075 +/-   0
+ptp4l[352582.640]: rms  930 max 3268 freq  +6756 +/- 1521 delay  2076 +/-   0
+ptp4l[352583.640]: rms 1303 max 4193 freq  +6146 +/- 2162
+ptp4l[352584.640]: rms 1439 max 4045 freq  +6543 +/- 2377 delay  2075 +/-   0
+ptp4l[352585.641]: rms 1914 max 3950 freq  +6726 +/- 3164 delay  2076 +/-   0
+ptp4l[352586.511]: selected best master clock 6805ca.fffe.2e5973
+ptp4l[352586.511]: port 1 (enp1s0f0np0): SLAVE to UNCALIBRATED on RS_SLAVE
+ptp4l[352636.625]: port 1 (enp1s0f0np0): UNCALIBRATED to LISTENING on ANNOUNCE_RECEIPT_TIMEOUT_EXPIRES
+ptp4l[352636.625]: selected local clock e8ebd3.fffe.b14702 as best master
+ptp4l[352636.814]: selected best master clock e8ebd3.fffe.b137e7
+ptp4l[352636.814]: port 1 (enp1s0f0np0): LISTENING to UNCALIBRATED on RS_SLAVE
+ptp4l[352637.501]: port 1 (enp1s0f0np0): UNCALIBRATED to SLAVE on MASTER_CLOCK_SELECTED
+ptp4l[352637.627]: rms 25707 max 66213 freq +25755 +/- 42075 delay  2251 +/- 309
+ptp4l[352638.627]: rms 21112 max 45435 freq +62575 +/- 22139 delay  3233 +/-   0
+ptp4l[352639.628]: rms 14232 max 16365 freq  +9787 +/- 8417
+ptp4l[352640.629]: rms 10135 max 14830 freq  -3334 +/- 961 delay  2654 +/-   0
+ptp4l[352641.629]: rms 2140 max 4011 freq  +2205 +/- 2086 delay  2074 +/-   1
+ptp4l[352642.630]: rms 1068 max 3253 freq  +5787 +/- 1395
+ptp4l[352643.631]: rms  842 max 1993 freq  +6412 +/- 1156 delay  2364 +/- 290
+ptp4l[352644.631]: rms  131 max  211 freq  +6064 +/- 186 delay  2652 +/-   0
+ptp4l[352645.632]: rms  153 max  200 freq  +6393 +/-  43 delay  2667 +/-   0
+ptp4l[352646.631]: selected best master clock 6805ca.fffe.2e5973
+ptp4l[352646.631]: port 1 (enp1s0f0np0): SLAVE to UNCALIBRATED on RS_SLAVE
+ptp4l[352696.775]: port 1 (enp1s0f0np0): UNCALIBRATED to LISTENING on ANNOUNCE_RECEIPT_TIMEOUT_EXPIRES
+ptp4l[352696.776]: selected local clock e8ebd3.fffe.b14702 as best master
+ptp4l[352696.940]: selected best master clock e8ebd3.fffe.b137e7
+ptp4l[352696.940]: port 1 (enp1s0f0np0): LISTENING to UNCALIBRATED on RS_SLAVE
+ptp4l[352697.877]: rms 10408 max 41618 freq  +2190 +/- 17229 delay  2110 +/-  16
+ptp4l[352697.877]: port 1 (enp1s0f0np0): UNCALIBRATED to SLAVE on MASTER_CLOCK_SELECTED
+ptp4l[352698.878]: rms 17844 max 37174 freq -34413 +/- 15046
+ptp4l[352699.879]: rms 7938 max 11270 freq  +1083 +/- 4600 delay  3228 +/- 917
+ptp4l[352700.879]: rms 7033 max 10956 freq +11523 +/- 2253 delay  2259 +/-   0
+ptp4l[352701.879]: rms 1974 max 3498 freq  +9552 +/- 864
+ptp4l[352702.880]: rms  353 max  640 freq  +7239 +/- 547 delay  2208 +/-   0
+ptp4l[352703.880]: rms 1898 max 3981 freq  +7916 +/- 3138 delay  2259 +/-   0
+ptp4l[352704.881]: rms 1880 max 2640 freq  +5182 +/- 2715
+ptp4l[352705.881]: rms 1023 max 3135 freq  +5546 +/- 1679 delay  2208 +/-   0
+ptp4l[352706.743]: selected best master clock 6805ca.fffe.2e5973
+ptp4l[352706.743]: port 1 (enp1s0f0np0): SLAVE to UNCALIBRATED on RS_SLAVE
+ptp4l[352756.990]: port 1 (enp1s0f0np0): UNCALIBRATED to LISTENING on ANNOUNCE_RECEIPT_TIMEOUT_EXPIRES
+ptp4l[352756.990]: selected local clock e8ebd3.fffe.b14702 as best master
+ptp4l[352757.029]: selected best master clock e8ebd3.fffe.b137e7
+ptp4l[352757.029]: port 1 (enp1s0f0np0): LISTENING to UNCALIBRATED on RS_SLAVE
+ptp4l[352758.341]: port 1 (enp1s0f0np0): UNCALIBRATED to SLAVE on MASTER_CLOCK_SELECTED
+ptp4l[352758.466]: rms 5939 max 15209 freq +10353 +/- 9726 delay  3456 +/-   0
+ptp4l[352759.467]: rms 5099 max 10658 freq +19706 +/- 4986 delay  3006 +/-   0
+ptp4l[352760.467]: rms 3146 max 4203 freq  +7788 +/- 2185 delay  3456 +/-   0
+ptp4l[352761.468]: rms 2777 max 4273 freq  +4971 +/- 2968
+ptp4l[352762.468]: rms 1678 max 3726 freq  +4459 +/- 2231 delay  3006 +/-   0
+ptp4l[352763.468]: rms 1388 max 4456 freq  +5734 +/- 2323 delay  3456 +/-   0
+ptp4l[352764.468]: rms  520 max 1971 freq  +5921 +/- 866 delay  3611 +/-   0
+ptp4l[352765.469]: rms  704 max 1819 freq  +6424 +/- 1113 delay  3538 +/-  24
+ptp4l[352766.469]: rms   57 max  114 freq  +6093 +/-  82 delay  3660 +/-   0
+ptp4l[352766.967]: selected best master clock 6805ca.fffe.2e5973
+ptp4l[352766.967]: port 1 (enp1s0f0np0): SLAVE to UNCALIBRATED on RS_SLAVE
+ptp4l[352786.717]: port 1 (enp1s0f0np0): UNCALIBRATED to LISTENING on ANNOUNCE_RECEIPT_TIMEOUT_EXPIRES
+ptp4l[352786.717]: selected local clock e8ebd3.fffe.b14702 as best master
+ptp4l[352786.828]: selected best master clock e8ebd3.fffe.b137e7
+ptp4l[352786.828]: port 1 (enp1s0f0np0): LISTENING to UNCALIBRATED on RS_SLAVE
+ptp4l[352788.016]: port 1 (enp1s0f0np0): UNCALIBRATED to SLAVE on MASTER_CLOCK_SELECTED
+ptp4l[352788.516]: rms 1436 max 2901 freq  +8456 +/- 1961 delay  2619 +/- 737
