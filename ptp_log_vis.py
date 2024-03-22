@@ -2,6 +2,7 @@ import os
 import argparse
 import numpy as np
 import plotly.graph_objects as px
+import re
 
 
 def parse_file(file_name):
@@ -9,6 +10,7 @@ def parse_file(file_name):
     with open(file_name, 'r') as file:
         # Initialize an empty list to store the rms values
         rms_values = []
+        time_values = []
         # Read the file line by line
         for line in file:
             # Split the line into fields based on the colon (:) separator
@@ -20,7 +22,13 @@ def parse_file(file_name):
                 rms_value = fields[1].strip().split()[1]
                 # Append the 'rms' value to the list
                 rms_values.append(float(rms_value))
-    return rms_values
+                # find the time stamp
+                time_stamp = re.search(r'\[(\d+\.\d+)\]', line).group(1)
+                # Append the time stamp to the list
+                time_values.append(float(time_stamp))
+    print(rms_values)
+    print(time_values)
+    return rms_values, time_values
 
 
 def main():
@@ -48,21 +56,26 @@ def main():
 
     # Create an empty dictionary to store the rms arrays
     rms_arrays = {}
+    time_arrays = {}
 
     # If file argument is provided, process the single file
     if args.file and not args.attacks:
         print(args.file)
-        rms_values = parse_file(args.file)
+        rms_values, time_values = parse_file(args.file)
         rms_array = np.array(rms_values)
+        time_array = np.array(time_values)
         rms_arrays[args.file] = rms_array
+        time_arrays[args.file] = time_array
     
         # If file argument is provided, process the single file
     if args.file and args.attacks:
         print(args.attacks)
 
-        rms_values = parse_file(args.file)
+        rms_values, time_values = parse_file(args.file)
         rms_array = np.array(rms_values)
+        time_array = np.array(time_values)
         rms_arrays[args.file] = rms_array
+        time_arrays[args.file] = time_array
         new_list = []
 
         # Define a dictionary to map file names to keys
@@ -90,9 +103,11 @@ def main():
                         key = file_key_map.get(file_name)
                         if key == args.trace:
                             print(file_path)
-                            rms_values = parse_file(file_path)
+                            rms_values, time_values = parse_file(args.file)
                             rms_array = np.array(rms_values)
-                            rms_arrays[file_path] = rms_array
+                            time_array = np.array(time_values)
+                            rms_arrays[args.file] = rms_array
+                            time_arrays[args.file] = time_array
 
 
     # If directory argument is provided, process all files in the directory
@@ -100,9 +115,12 @@ def main():
         for file_name in os.listdir(args.directory):
             file_path = os.path.join(args.directory, file_name)
             if os.path.isfile(file_path):
-                rms_values = parse_file(file_path)
+                rms_values, time_values = parse_file(args.file)
                 rms_array = np.array(rms_values)
-                rms_arrays[file_name] = rms_array
+                time_array = np.array(time_values)
+                rms_arrays[args.file] = rms_array
+                time_arrays[args.file] = time_array
+
 
     # Create a Plotly figure outside the loop
     plot = px.Figure()
