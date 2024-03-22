@@ -11,6 +11,8 @@ def parse_file(file_name):
         # Initialize an empty list to store the rms values
         rms_values = []
         time_values = []
+
+        start_time = None
         # Read the file line by line
         for line in file:
             # Split the line into fields based on the colon (:) separator
@@ -23,11 +25,18 @@ def parse_file(file_name):
                 # Append the 'rms' value to the list
                 rms_values.append(float(rms_value))
                 # find the time stamp
-                time_stamp = re.search(r'\[(\d+\.\d+)\]', line).group(1)
-                # Append the time stamp to the list
-                time_values.append(float(time_stamp))
-    print(rms_values)
-    print(time_values)
+                # Find the time stamp using regex
+                time_stamp_match = re.search(r'\[(\d+\.\d+)\]', line)
+                if time_stamp_match:
+                    time_stamp = float(time_stamp_match.group(1))
+                    # If start_time has not been set yet, set it to the current time_stamp
+                    if start_time is None:
+                        start_time = time_stamp
+                    # Calculate the time relative to the start_time
+                    time_sec = time_stamp - start_time
+                    # Append the relative time to the list
+                    time_values.append(time_sec)
+
     return rms_values, time_values
 
 
@@ -76,7 +85,6 @@ def main():
         time_array = np.array(time_values)
         rms_arrays[args.file] = rms_array
         time_arrays[args.file] = time_array
-        new_list = []
 
         # Define a dictionary to map file names to keys
         file_key_map = {'run1-8sep-aerial-increasingDL-withUL.txt': '0', 
@@ -103,11 +111,11 @@ def main():
                         key = file_key_map.get(file_name)
                         if key == args.trace:
                             print(file_path)
-                            rms_values, time_values = parse_file(args.file)
+                            rms_values, time_values = parse_file(file_path)
                             rms_array = np.array(rms_values)
                             time_array = np.array(time_values)
-                            rms_arrays[args.file] = rms_array
-                            time_arrays[args.file] = time_array
+                            rms_arrays[file_path] = rms_array
+                            time_arrays[file_path] = time_array
 
 
     # If directory argument is provided, process all files in the directory
@@ -126,32 +134,34 @@ def main():
     plot = px.Figure()
     # Print the rms arrays for each file
     for file_name, rms_array in rms_arrays.items():
-        #print(f'RMS array for {file_name}: {rms_array}')
-        cur_file_name = file_name.replace('../securing_ORAN-master/DataCollectionPTP/RU/', "")
-        new_file_name = cur_file_name.replace('/', " ")
-        plot.add_trace(px.Scatter(y=rms_array, mode='lines', name=f'{new_file_name}'))
+            print(file_name)
+            #print(f'RMS array for {file_name}: {rms_array}')
+            cur_file_name = file_name.replace('../securing_ORAN-master/DataCollectionPTP/RU/', "")
+            new_file_name = cur_file_name.replace('/', " ")
+            print(time_array)
+            plot.add_trace(px.Scatter(x=time_array, y=rms_array, mode='lines', name=f'{new_file_name}'))
 
-        plot.update_layout(
-            title="PTP Clock Offset for {}".format(args.file.replace('../securing_ORAN-master/DataCollectionPTP/RU/', "").replace('/', " ")),
-            yaxis_title="Offset (ns)",
-            xaxis_title="Elapsed time (s)",
-            xaxis=dict(
-                rangeselector=dict(
-                    buttons=list([
-                        dict(count=1,
-                             step="second",
-                             stepmode="backward"),
-                    ])
+            plot.update_layout(
+                title="PTP Clock Offset for {}".format(args.file.replace('../securing_ORAN-master/DataCollectionPTP/RU/', "")),
+                yaxis_title="Offset (ns)",
+                xaxis_title="Elapsed time (s)",
+                xaxis=dict(
+                    rangeselector=dict(
+                        buttons=list([
+                            dict(count=1,
+                                step="second",
+                                stepmode="backward"),
+                        ])
+                    ),
+                    rangeslider=dict(
+                        visible=True
+                    ),
                 ),
-                rangeslider=dict(
-                    visible=True
-                ),
-            ),
-            yaxis=dict(
-                autorange=True,
-                fixedrange=False
+                yaxis=dict(
+                    autorange=True,
+                    fixedrange=False
+                )
             )
-        )
 
     plot.show()
 
