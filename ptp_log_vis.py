@@ -29,8 +29,15 @@ def main():
 
     # Add an argument for the file name
     parser.add_argument('-f', '--file', type=str, help='Name of the input file')
+    
     # Add an argument for the directory path
     parser.add_argument('-d', '--directory', type=str, help='Path to the directory containing input files')
+
+    # Add a flag enable attacks filter lines based on a keyword
+    parser.add_argument('-a', '--attacks', type=str, help='Enable Attacks')
+
+    # Add a flag enable attacks filter lines based on a keyword
+    parser.add_argument('-t', '--trace', type=str, help='To distinguish trace')
 
     # Parse the command-line arguments
     args = parser.parse_args()
@@ -43,10 +50,50 @@ def main():
     rms_arrays = {}
 
     # If file argument is provided, process the single file
-    if args.file:
+    if args.file and not args.attacks:
+        print(args.file)
         rms_values = parse_file(args.file)
         rms_array = np.array(rms_values)
         rms_arrays[args.file] = rms_array
+    
+        # If file argument is provided, process the single file
+    if args.file and args.attacks:
+        print(args.attacks)
+
+        rms_values = parse_file(args.file)
+        rms_array = np.array(rms_values)
+        rms_arrays[args.file] = rms_array
+        new_list = []
+
+        # Define a dictionary to map file names to keys
+        file_key_map = {'run1-8sep-aerial-increasingDL-withUL.txt': '0', 
+                    'run1-12sep-aerial-udpDL.txt': '1', 
+                    'run2-8sep-aerial-increasingDL-noUL.txt': '2', 
+                    'run3-8sep-aerial-maxDLUL.txt': '3'}
+        
+        # Define the folder path based on the attack type
+        attack_folder_path = {
+            'Announce': '../securing_ORAN-master/DataCollectionPTP/RU/MaliciousTraffic/Announce/',
+            'Sync': '../securing_ORAN-master/DataCollectionPTP/RU/MaliciousTraffic/Sync_FollowUp/'
+        }
+
+        if args.attacks in ['Announce', 'Sync']:
+            attack_type = args.attacks  # Get the attack type
+            folder_path = attack_folder_path[attack_type]  # Get the folder path based on the attack type
+
+            for attack_name in os.listdir(folder_path):
+                attack_freq_folder_path = os.path.join(folder_path, attack_name)
+                
+                for file_name in os.listdir(attack_freq_folder_path):
+                    file_path = os.path.join(attack_freq_folder_path, file_name)
+                    if os.path.isfile(file_path):
+                        key = file_key_map.get(file_name)
+                        if key == args.trace:
+                            print(file_path)
+                            rms_values = parse_file(file_path)
+                            rms_array = np.array(rms_values)
+                            rms_arrays[file_path] = rms_array
+
 
     # If directory argument is provided, process all files in the directory
     if args.directory:
@@ -57,20 +104,17 @@ def main():
                 rms_array = np.array(rms_values)
                 rms_arrays[file_name] = rms_array
 
+    # Create a Plotly figure outside the loop
+    plot = px.Figure()
     # Print the rms arrays for each file
     for file_name, rms_array in rms_arrays.items():
         #print(f'RMS array for {file_name}: {rms_array}')
-        plot = px.Figure(data=[px.Scatter(
-            y=rms_array,
-            mode='lines',
-            # make the line red (for Malicious)
-            # TODO: make the benign traffic blue, and the malicious traffic different shades of red
-            # TODO: each malicious trace should have a different marker and line style (dashed, dotted, etc)
-            line=dict(color="#FF0000")
-        )])
+        cur_file_name = file_name.replace('../securing_ORAN-master/DataCollectionPTP/RU/', "")
+        new_file_name = cur_file_name.replace('/', " ")
+        plot.add_trace(px.Scatter(y=rms_array, mode='lines', name=f'{new_file_name}'))
 
         plot.update_layout(
-            title="PTP Clock Offset for {}".format(file_name),
+            title="PTP Clock Offset for {}".format(args.file.replace('../securing_ORAN-master/DataCollectionPTP/RU/', "").replace('/', " ")),
             yaxis_title="Offset (ns)",
             xaxis_title="Elapsed time (s)",
             xaxis=dict(
@@ -91,9 +135,10 @@ def main():
             )
         )
 
-        plot.show()
+    plot.show()
 
 
 if __name__ == '__main__':
     main()
+
 
