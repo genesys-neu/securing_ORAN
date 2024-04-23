@@ -1,5 +1,5 @@
 # securing_ORAN
-Tools used to investigate the cost of securing ORAN Open Interfaces. If you use the code or datasets, please cite
+Tools used to investigate the cost of "Securing O-RAN Open Interfaces". If you use the code or datasets, please cite
 > J. Groen, S. D'Oro, U. Demir, L. Bonati, D. Villa, M. Polese, T. Melodia, and K. R. Chowdhury, "Securing O-RAN Open Interfaces," IEEE Transactions on Mobile Computing, accepted, April 2024."
 > <a href="https://genesys-lab.org/papers/Securing-ORAN.pdf" target="_blank">[pdf]</a> 
 
